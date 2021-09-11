@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body {
+        padding: 50px 20px 20px 50px;
+        background-color: #343a40 !important;
+        color: #e98208;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    p {
+        padding: 30px 150px;
+        font-size: 30px;
+        text-align: center;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Clock</title>
+</head>
+
+<body>
+
+    <h1> Merhaba, <span id="name"></span>
+        ! Hoş geldin!</h1>
+
+    <p id="description">
+        <span id="hour"></span> <span id="day-name"></span> tarihinde Kodluyoruz Frontend Web Development
+        Patikası'nın Javascript bölümü 1. Ödevindesiniz.
+    </p>
+
+    <script>
+        let nameElement = document.getElementById("name");
+        let hourElement = document.getElementById("hour");
+        let dayNameElement = document.getElementById("day-name");
+
+        function askName() {
+            let name = prompt("Adınız nedir?");
+            nameElement.innerText = name;
+        }
+
+        function showTime() {
+            let d = new Date();
+            let h = d.getHours();
+            let m = d.getMinutes();
+            let s = d.getSeconds();
+
+            let weekdays = new Array(7);
+            weekdays[0] = "Pazartesi";
+            weekdays[1] = "Salı";
+            weekdays[2] = "Çarşamba";
+            weekdays[3] = "Perşembe";
+            weekdays[4] = "Cuma";
+            weekdays[5] = "Cumartesi";
+            weekdays[6] = "Pazar";
+
+            let dayName = weekdays[d.getDay()];
+            let time = h + ":" + m + ":" + s;
+
+            hourElement.innerText = time;
+            dayNameElement.innerText = dayName;
+
+            setTimeout(showTime, 1000);
+        };
+
+        askName();
+        showTime();
+    </script>
+
+
+</body>
+
+</html>
